@@ -44,7 +44,7 @@ class HomeController extends Controller {
 	public function userz()
 	{
 		//
-            $users = DB::select('select * from userz');
+            $users = DB::select('select * from userZ');
             return view('userz.index',compact('users'));
 	}
 
