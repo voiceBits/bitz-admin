@@ -1,2 +1,2 @@
-# bitz-admin
-Voicebits Apps Laravel 5 voicebitz db admin dashboard
+# saucy-bark
+Voicebits Apps: Intro page built in Laravel 5
