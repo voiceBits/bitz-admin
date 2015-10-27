@@ -63,11 +63,8 @@ public function __construct(Request $request)
 			'email' => $this->request->email,
 			'password' => bcrypt($this->request->password),
 		]);                 
-//        $board = new Board($this->request->all());
-  //      $board_inserted = $this->user->boards()->save($board);
-
+                
         \Session::flash('flash_message', 'User created.');
-        //dd($input, $insertthisuserboard);
         return redirect('home');        
 
 	}
