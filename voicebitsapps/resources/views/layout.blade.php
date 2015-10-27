@@ -17,7 +17,8 @@
 	@if (Auth::guest())
       <ul class="right hide-on-med-and-down">
         <li><a href="{{ url('/home') }}">Log In</a></li>
-        <li><a href="{{ url('/auth/register') }}">Register</a></li>
+{{--        <li><a href="{{ url('/auth/register') }}">Register</a></li>  
+      --}}
       </ul>
 		
 			

@@ -6,7 +6,7 @@ Inspire. Be inspired.
 Making kids happier & healthier
 @stop
 @section('header_subtitle')
-by building creative learning environments in sports & technology.
+using sports & technology to build creative learning environments.
 @stop
 {{-- @section('calltoaction')
 <a href="#" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
