@@ -17,14 +17,11 @@
 	@if (Auth::guest())
       <ul class="right hide-on-med-and-down">
         <li><a href="{{ url('/home') }}">Log In</a></li>
-{{--        <li><a href="{{ url('/auth/register') }}">Register</a></li>  
-      --}}
       </ul>
 		
 			
       <ul id="nav-mobile" class="side-nav">
         <li><a href="{{ url('/home') }}">Log In</a></li>
-        <li><a href="{{ url('/auth/register') }}">Register</a></li>
       </ul>
 	@else
       <ul class="right hide-on-med-and-down">
