@@ -27,9 +27,15 @@ You are logged in {{ Auth::user()->username }}.
               <li class="collection-item">
                   <div>Userz<a href="{{ action('HomeController@userz') }}" class="secondary-content"><i class="material-icons">send</i></a></div>
               </li>
-              <li class="collection-item"><div>Voizbitz<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-              <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-              <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+              <li class="collection-item">
+                  <div>Voizbitz<a href="{{ action('HomeController@voizbitz') }}" class="secondary-content"><i class="material-icons">send</i></a></div
+              </li>
+              <li class="collection-item">
+                  <div>Cloudz<a href="{{ action('HomeController@cloudz') }}" class="secondary-content"><i class="material-icons">send</i></a></div>
+              </li>
+              <li class="collection-item">
+                  <div>Peepz<a href="{{ action('HomeController@peepz') }}" class="secondary-content"><i class="material-icons">send</i></a></div>
+              </li>
             </ul>
         </div>
 

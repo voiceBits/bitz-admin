@@ -37,8 +37,9 @@ class HomeController extends Controller {
 	}
 
 	/**
-	 * Display a listing of the resource.
-	 *
+	 * Display a listing of the voicebitZ tables.
+	 * tables have a capital Z even though in db it is not this is for prod
+         * 
 	 * @return Response
 	 */
 	public function userz()
@@ -47,5 +48,23 @@ class HomeController extends Controller {
             $users = DB::select('select * from userZ');
             return view('userz.index',compact('users'));
 	}
+	public function voizbitz()
+	{
+		//
+            $records = DB::select('select * from voizbitZ');
+            return view('bitz.index',compact('records'));
+	}
+	public function cloudz()
+	{
+		//
+            $records = DB::select('select * from cloudZ');
+            return view('bitz.index',compact('records'));
+	}
+	public function peepz()
+	{
+		//
+            $records = DB::select('select * from peepZ');
+            return view('peepz.index',compact('records'));
+	}        
 
 }
