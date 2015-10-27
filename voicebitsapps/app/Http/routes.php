@@ -14,6 +14,14 @@
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
+Route::get('userz', 'HomeController@userz');
+
+// Model bind and Resource routes
+
+    # Users
+    Route::model('users', 'App\User');
+    Route::resource('users', 'UsersController');
+
 Route::get('profile', 'HomeController@memberprofile');
 Route::get('members', 'PageController@home');
 Route::get('tasks', 'TaskController@index');
