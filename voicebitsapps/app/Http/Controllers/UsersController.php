@@ -78,6 +78,7 @@ public function __construct(Request $request)
 	public function show($id)
 	{
 		//
+            dd($id);
 	}
 
 	/**
@@ -111,6 +112,9 @@ public function __construct(Request $request)
 	public function destroy($id)
 	{
 		//
+        $id->delete();
+        return redirect('home');
+
 	}
 
 }
