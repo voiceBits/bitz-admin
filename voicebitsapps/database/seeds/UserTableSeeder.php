@@ -17,15 +17,15 @@ class UserTableSeeder extends Seeder
 		   "username"   => "Admin",
 		   "email"      => "kevin@voicebitz.com",
 		   "status"     => "Y",
-           'password' 	=> bcrypt('secret')
+           'password' 	=> bcrypt('Adminsecret')
         ]);
 		
 		DB::table('users')->insert([
            'name' 		=> 'Pinduin Support',
-		   "username"   => "Peggy",
-           "email" 		=> "peggyp@pinduin.com",
+		   "username"   => "Peggy P",
+           "email" 		=> "peggy@pinduin.com",
 		   "status"     => "Y",
-           'password' 	=> bcrypt('secret')
+           'password' 	=> bcrypt('peggyp')
         ]);
 		DB::table('users')->insert([
            'name' 		=> str_random(10),
