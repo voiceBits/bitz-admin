@@ -12,6 +12,7 @@
   <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+<div class="navbar-fixed">
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="{{ url('/') }}" class="brand-logo">Voicebits Apps</a>
 	@if (Auth::guest())
@@ -39,6 +40,28 @@
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
+
+</div>
+
+                                @if (count($errors) > 0)
+                                  <div class="container">
+                                   <div class="section">
+                                            <div class="row">
+
+						<div class="col s6 offset-s3 card-panel red darken-1 white-text text-darken-1">
+							<h5>Whoops!</h5>
+							<p>There were some problems with your input.</p>
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+                                            </div>
+                                    </div>
+                                  </div>
+                                @endif
+                                
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
