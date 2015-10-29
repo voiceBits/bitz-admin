@@ -58,7 +58,7 @@ class HomeController extends Controller {
 	{
 		//
             $records = DB::select('select * from cloudZ');
-            return view('bitz.index',compact('records'));
+            return view('cloudz.index',compact('records'));
 	}
 	public function peepz()
 	{
