@@ -39,5 +39,7 @@ Route::get('blog', 'WelcomeController@blog');
     Route::get('userz/{id}/edit', 'ZuserzController@edit');
     Route::match(['put', 'patch'],'userz/{id}','ZuserzController@update');
     Route::delete('userz/{id}', 'ZuserzController@destroy');
-
+    
+    # voizbitZ resource routing
+    Route::resource('bitz', 'ZvoizbitzController');
 
