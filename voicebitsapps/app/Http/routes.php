@@ -34,3 +34,10 @@ Route::get('blog', 'WelcomeController@blog');
     Route::get('bitz', 'HomeController@voizbitz');
     Route::get('cloudz', 'HomeController@cloudz');
     Route::get('peepz', 'HomeController@peepz');
+    
+    # userZ resource routing
+    Route::get('userz/{id}/edit', 'ZuserzController@edit');
+    Route::match(['put', 'patch'],'userz/{id}','ZuserzController@update');
+    Route::delete('userz/{id}', 'ZuserzController@destroy');
+
+

@@ -7,7 +7,7 @@ Inspire. Be inspired.
     <ul class="collection">
 @foreach ($users as $user)
         <li class="collection-item dismissable">
-            <div>{{ $user->username }}<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
+            <div>{{ $user->username }}<a href="{{ action('ZuserzController@edit', [$user->userZID]) }}" class="secondary-content"><i class="material-icons">send</i></a></div>
         </li>
 @endforeach 
     </ul>
