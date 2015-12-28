@@ -79,11 +79,6 @@
 			</div>
     </div>
   </div>
-{{-- 
-layout of the content is container/section/row(1...x)
-Two main content areas that are customizable: body and body2
-Content areas must start with div row if there are many rows in the body, else can start with content.
---}}
   <div class="container">
     <div class="section">
 	@yield('body')
@@ -106,15 +101,8 @@ Content areas must start with div row if there are many rows in the body, else c
         <div class="row">
 		  <div class="col l6 s12">
 			<h5 class="white-text">Dream big and chase with great passion.</h5>
-			<p class="grey-text text-lighten-4">Our vision is to be the most awesome software development company...ever!  Read more about why we believe "There is only one reason to be a software development company" <a class="grey-text text-lighten-3" href="#!">here</a>.
+			<p class="grey-text text-lighten-4">Our vision is to be the most awesome software development company...ever!  Read more about why we believe "There is only one good reason to be a software development company" <a class="grey-text text-lighten-3" href="#!">here</a>.
 
-			{{-- these comments are pretty cool, then you can keep thoughts as you are coding and later remove them from your "public" fork on github.
-anyway this is stuff about what is in the blog post "There is only one reason to be a software development company."
-
-			And that one reason is to be an awesome software development company. As cliche or cheesy as it sounds I believe that anyone that has ever tried to start a software development company knows deep down inside that you do it or did it because you thought that you could develop something great, fantastic, super, and basically just awesome!  Well, if you did not then I don't know what to say because for me I do believe that I can develop something great and when I do I will just keep going until I am the ... okay have a look at this because you are rattlin some I's off
-			
-			most can agree that at  combining sports and technology.
-			--}}
 			</p>
 		  </div>
 
