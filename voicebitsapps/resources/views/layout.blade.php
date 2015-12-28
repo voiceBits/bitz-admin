@@ -101,7 +101,7 @@
         <div class="row">
 		  <div class="col l6 s12">
 			<h5 class="white-text">Dream big and chase with great passion.</h5>
-			<p class="grey-text text-lighten-4">Our vision is to be the most awesome software development company...ever!  Read more about why we believe <a class="grey-text text-lighten-3" href="http://wp.me/P4WFWL-4i">"There is only one good reason to be a software development company" here</a>.  Or check out <a class="grey-text text-lighten-3" href="http://infamusk72.com">the blog</a> to follow our journey.
+			<p class="grey-text text-lighten-4">Our vision is to be the most awesome software development company...ever!  Read more about why we believe <a class="grey-text text-lighten-3" href="http://wp.me/P4WFWL-4i">"There is only one good reason to be a software development company" here</a>.  Or check out <a class="grey-text text-lighten-3" href="http://infamusk72.com">the blog here</a> to follow our journey.
 
 			</p>
 		  </div>
