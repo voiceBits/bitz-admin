@@ -16,7 +16,16 @@ class PoliMemesController extends Controller
     public function index()
     {
 
-    	return ('Hello');
+
+$genres = array('comedy','horror','romance');
+$text['comedy'][0] = array( 'duration' => '10', 'start' => '0', 'end' => '10', 'text' => 'aaaaaaaaa');
+$text['comedy'][1] = array( 'duration' => '10', 'start' => '10', 'end' => '20', 'text' => 'bbbb');
+$text['comedy'][2] = array( 'duration' => '140', 'start' => '20', 'end' => '160', 'text' => 'cccccccc');
+$text['horror'][0] = array( 'duration' => '5', 'start' => '0', 'end' => '5', 'text' => 'fadfda');
+$text['horror'][1] = array( 'duration' => '300', 'start' => '5', 'end' => '305', 'text' => 'afadfdafadfadfadfadf');
+$text['romance'][0] = array( 'duration' => '120', 'start' => '0', 'end' => '120', 'text' => '5555555555555');
+
+    	return view('ccmashup.home', compact('genres', 'text'));
 
     }
 
