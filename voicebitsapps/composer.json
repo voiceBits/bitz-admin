@@ -5,10 +5,11 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "5.0.*",
+		"laravel/framework": "5.1.*",
 		"laravelcollective/html": "~5.0",
 		"intervention/image": "^2.3",
-		"gettyimages/gettyimages-api": "dev-master"		
+		"doctrine/dbal":"2.5.2",
+		"laravel/socialite": "^2.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

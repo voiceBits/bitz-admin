@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers\Auth;
 
+use App\User;
+use App\Board;
+use Validator;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
@@ -17,7 +21,8 @@ class AuthController extends Controller {
 	| a simple trait to add these behaviors. Why don't you explore it?
 	|
 	*/
-
+	// Add protected property to use username as default for login in trait
+	
 	use AuthenticatesAndRegistersUsers;
 
 	/**
@@ -27,12 +32,45 @@ class AuthController extends Controller {
 	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
 	 * @return void
 	 */
-	public function __construct(Guard $auth, Registrar $registrar)
+	public function __construct()
 	{
-		$this->auth = $auth;
-		$this->registrar = $registrar;
-
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
+	/**
+	 * Get a validator for an incoming registration request.
+	 *
+	 * @param  array  $data
+	 * @return \Illuminate\Contracts\Validation\Validator
+	 */
+	public function validator(array $data)
+	{
+		return Validator::make($data, [
+			'email' => 'required|email|max:255|unique:users',
+			'password' => 'required|confirmed|min:6',
+		]);
+	}
 
+	/**
+	 * Create a new user instance after a valid registration.
+	 *
+	 * @param  array  $data
+	 * @return User
+	 */
+	public function create(array $data)
+	{
+
+		$user = User::create([
+			'username' => $data['username'],
+			'email' => $data['email'],
+			'password' => bcrypt($data['password']),
+		]);
+
+            // Create the user's personal pinboard
+            if ($user) :
+                $personalboard = Board::Create(['title' => 'My Personal Activities','body' => 'I will do these All Day! Erry Day!','shared_with' => 0, 'id_users'=> $user->id]);
+            endif;
+
+
+		return $user;
+	}
 }

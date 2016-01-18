@@ -137,7 +137,8 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 		//  Intervention Image Library
 		'Intervention\Image\ImageServiceProvider',
-
+		// Laravel 5.1.12 Upgrade including Auth
+		'Illuminate\Broadcasting\BroadcastServiceProvider',
 		/*
 		 * Application Service Providers...
 		 */
@@ -146,9 +147,13 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+		// Laravel 5.1.12 Upgrades for Auth
+		'App\Providers\AuthServiceProvider',
+		// ...
 		// Laravel Forms 5.0
 		'Collective\Html\HtmlServiceProvider',
-		// ...
+		// Other service providers
+		'Laravel\Socialite\SocialiteServiceProvider',
 	],
 
 	/*
@@ -181,6 +186,9 @@ return [
 		'Form' => 'Collective\Html\FormFacade',
 		'Html' => 'Collective\Html\HtmlFacade',
 		// ...
+		// Laravel 5.1.12 Upgrades for Auth
+		'Gate' => Illuminate\Support\Facades\Gate::class,
+		// ...
 		'Hash'      => 'Illuminate\Support\Facades\Hash',
 		// Intervention Image Library
 		'Image' => 'Intervention\Image\Facades\Image',
@@ -202,6 +210,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		// Socialite
+		'Socialite' => 'Laravel\Socialite\Facades\Socialite',
 
 	],
 
