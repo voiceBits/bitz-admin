@@ -19,6 +19,9 @@ Route::controllers([
 Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index'); // authenticated users home
 
+# CCshake aka SCRUBTITLES api routing
+Route::resource('api', 'PoliMemesController');
+
 # Blog pages
 Route::get('about', 'WelcomeController@about');
 Route::get('blog', 'WelcomeController@blog');
