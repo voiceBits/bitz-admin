@@ -22,6 +22,7 @@ class AuthController extends Controller {
 	|
 	*/
 	// Add protected property to use username as default for login in trait
+	## username login uncomment this protected $username = 'username';
 	
 	use AuthenticatesAndRegistersUsers;
 
@@ -45,6 +46,7 @@ class AuthController extends Controller {
 	public function validator(array $data)
 	{
 		return Validator::make($data, [
+			## username login uncomment this 'username' => 'required|max:50|unique:users',
 			'email' => 'required|email|max:255|unique:users',
 			'password' => 'required|confirmed|min:6',
 		]);
