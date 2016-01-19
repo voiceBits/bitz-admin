@@ -1,6 +1,6 @@
+var activeCueIds = [];
 $( document ).ready(function() {
   //for when DOM is ready..
-  var activeCueIds = [];
   nScrubs = 0; //number of times scrubed. Could put in a function to reset after x number scrubs, and then instead load new subs in same genre.
   
   //initialise with subs:
