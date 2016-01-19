@@ -92,7 +92,7 @@ function scrubTrack(offsetIndex){
 	track.addCue(new VTTCue(58.85, 61.75, "A dangerous quest for a lone hunter."));
 	track.addCue(new VTTCue(62.95, 65.87, "I've been alone for as long as I can remember."));
 	track.addCue(new VTTCue(118.25, 119.5, "We're almost done. Shhh..."));	*/
-	return offsetIndex;
+	//return offsetIndex;
 } 
 
 
