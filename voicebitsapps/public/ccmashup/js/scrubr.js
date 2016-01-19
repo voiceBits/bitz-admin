@@ -1,12 +1,12 @@
 var activeCueIds = [];
-var nScrubs = 0; //number of times scrubed. Could put in a function to reset after x number scrubs, and then instead load new subs in same genre.
+var nScrubs = -1; //number of times scrubed. Could put in a function to reset after x number scrubs, and then instead load new subs in same genre.
 
 $( document ).ready(function() {
   //for when DOM is ready..
   
   
   //initialise with subs:
-  scrubTrack(1);
+  scrubTrack(nScrubs + 1);
   
 	var iframe_active = $(".activevideo:first").data("zid");
 	if (iframe_active == null || iframe_active <= 0) $('#ajax-loader-video').toggle();
@@ -92,13 +92,8 @@ function scrubTrack(offsetIndex){
 	track.addCue(new VTTCue(62.95, 65.87, "I've been alone for as long as I can remember."));
 	track.addCue(new VTTCue(118.25, 119.5, "We're almost done. Shhh..."));	*/
 	//return offsetIndex;
-	updateScrubs();
+	offsetIndex++;
 } 
-
-function updateScrubs() {
-  nScrubs++;
-  if(nScrubs => 2) nScrubs = 0;
-}
 
 
 /*laravel specifics? don't know where these came from */
