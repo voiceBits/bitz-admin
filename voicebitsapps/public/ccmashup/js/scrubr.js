@@ -24,19 +24,18 @@ $( document ).ready(function() {
 		//Generic swipe handler for all directions
     swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
       
-      if (direction == null) return false;
+      if (direction == null) {return false;}
       
       if (direction == 'up') {
         console.log("scrub up " + nScrubs);
         scrubTrack(nScrubs);
-
       }
       
-      if (direction == 'down') console.log("down"); //return false;
+      if (direction == 'down') {console.log("down");} //return false;
       
       if (direction == 'right') console.log("right"); //return false;
       
-      if (direction == 'left') console.log("left"); //return false;
+      if (direction == 'left') {console.log("left");} //return false;
       //if (direction == 'left') rotatelement(".info-panels",180); //return false;
     },
    //Default is 75px
