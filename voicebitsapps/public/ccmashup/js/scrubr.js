@@ -25,7 +25,7 @@ $( document ).ready(function() {
       if (direction == null) return false;
       
       if (direction == 'up') {
-        console.log("scrub up");
+        console.log("scrub up " + nScrubs);
         scrubTrack(nScrubs);
         nScrubs++;
         if(nScrubs => 9) nScrubs = 0;
