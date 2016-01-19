@@ -28,7 +28,6 @@ $( document ).ready(function() {
       
       if (direction == 'up') {
         console.log("scrub up " + nScrubs);
-        updateScrubs();
         scrubTrack(nScrubs);
 
       }
@@ -46,15 +45,11 @@ $( document ).ready(function() {
   
 });
 
-function updateScrubs() {
-  nScrubs = nScrubs + 1;
-  if(nScrubs => 2) nScrubs = 0;
-}
+
 
 function scrubTrack(offsetIndex){
   
   var track = video.addTextTrack("captions", "comedy", "en");
-  
   
   track.mode = "showing";
 
@@ -75,11 +70,11 @@ function scrubTrack(offsetIndex){
 
 
 	for (var i = 0; i < starttime.length; i++) {
-	  //console.log(i, starttime[i], endtime[i], text[i]);
-	  newCue = new VTTCue(starttime[i], endtime[i], text[i]);
-	  track.addCue(newCue);
+	  console.log(i, starttime[i], endtime[i], text[i]);
+	  //newCue = new VTTCue(starttime[i], endtime[i], text[i]);
+	  track.addCue(new VTTCue(starttime[i], endtime[i], text[i]));
     //storing cue ID's in the activeCueIds array - to be used for deletion
-	  activeCueIds[i] = newCue.id;
+	  //activeCueIds[i] = newCue.id;
 	}
   
 	/*track.addCue(new VTTCue(0, 12, "Loaded Cues"));
@@ -97,9 +92,13 @@ function scrubTrack(offsetIndex){
 	track.addCue(new VTTCue(62.95, 65.87, "I've been alone for as long as I can remember."));
 	track.addCue(new VTTCue(118.25, 119.5, "We're almost done. Shhh..."));	*/
 	//return offsetIndex;
+	updateScrubs();
 } 
 
-
+function updateScrubs() {
+  nScrubs++;
+  if(nScrubs => 2) nScrubs = 0;
+}
 
 
 /*laravel specifics? don't know where these came from */
