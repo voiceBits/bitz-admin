@@ -6,7 +6,7 @@ $( document ).ready(function() {
   
   
   //initialise with subs:
-  scrubTrack(0);
+  scrubTrack(1);
   
 	var iframe_active = $(".activevideo:first").data("zid");
 	if (iframe_active == null || iframe_active <= 0) $('#ajax-loader-video').toggle();
@@ -28,8 +28,9 @@ $( document ).ready(function() {
       
       if (direction == 'up') {
         console.log("scrub up " + nScrubs);
-        scrubTrack(nScrubs);
         updateScrubs();
+        scrubTrack(nScrubs);
+
       }
       
       if (direction == 'down') console.log("down"); //return false;
