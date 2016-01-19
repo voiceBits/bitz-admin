@@ -29,8 +29,7 @@ $( document ).ready(function() {
       if (direction == 'up') {
         console.log("scrub up " + nScrubs);
         scrubTrack(nScrubs);
-        nScrubs = nScrubs + 1;
-        if(nScrubs => 2) nScrubs = 0;
+        updateScrubs();
       }
       
       if (direction == 'down') console.log("down"); //return false;
@@ -46,6 +45,10 @@ $( document ).ready(function() {
   
 });
 
+function updateScrubs() {
+  nScrubs = nScrubs + 1;
+  if(nScrubs => 2) nScrubs = 0;
+}
 
 function scrubTrack(offsetIndex){
   
