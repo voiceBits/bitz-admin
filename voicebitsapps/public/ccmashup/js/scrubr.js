@@ -1,7 +1,9 @@
 var activeCueIds = [];
+nScrubs = 0; //number of times scrubed. Could put in a function to reset after x number scrubs, and then instead load new subs in same genre.
+
 $( document ).ready(function() {
   //for when DOM is ready..
-  nScrubs = 0; //number of times scrubed. Could put in a function to reset after x number scrubs, and then instead load new subs in same genre.
+  
   
   //initialise with subs:
   scrubTrack(0);
@@ -25,9 +27,9 @@ $( document ).ready(function() {
       if (direction == null) return false;
       
       if (direction == 'up') {
-        console.log("scrub up " + nScrubs);
+        console.log("scrub up " + nScrubs + 1);
         scrubTrack(nScrubs);
-        nScrubs++;
+        nScrubs =+ 1;
         if(nScrubs => 9) nScrubs = 0;
       }
       
