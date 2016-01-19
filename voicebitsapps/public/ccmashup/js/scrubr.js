@@ -32,7 +32,7 @@ $(function() {
         console.log("scrub up");
         scrubTrack(nScrubs);
         nScrubs++;
-        if(nScrubs => 9) nScrubs = 0
+        if(nScrubs => 9) nScrubs = 0;
       }
       
       if (direction == 'down') console.log("down"); //return false;
