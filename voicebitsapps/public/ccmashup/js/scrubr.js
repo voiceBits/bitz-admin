@@ -29,7 +29,7 @@ $( document ).ready(function() {
       if (direction == 'up') {
         console.log("scrub up " + nScrubs);
         scrubTrack(nScrubs);
-        nScrubs =+ 1;
+        nScrubs = nScrubs + 1;
         if(nScrubs => 2) nScrubs = 0;
       }
       
