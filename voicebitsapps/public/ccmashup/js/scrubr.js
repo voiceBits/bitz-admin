@@ -30,7 +30,7 @@ $( document ).ready(function() {
         console.log("scrub up " + nScrubs + 1);
         scrubTrack(nScrubs);
         nScrubs =+ 1;
-        if(nScrubs => 9) nScrubs = 0;
+        if(nScrubs => 2) nScrubs = 0;
       }
       
       if (direction == 'down') console.log("down"); //return false;
