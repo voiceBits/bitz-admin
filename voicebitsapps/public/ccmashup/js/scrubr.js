@@ -1,7 +1,6 @@
-var activeCueIds = [];
-
 $( document ).ready(function() {
   //for when DOM is ready..
+  var activeCueIds = [];
   nScrubs = 0; //number of times scrubed. Could put in a function to reset after x number scrubs, and then instead load new subs in same genre.
   
   //initialise with subs:
@@ -17,10 +16,7 @@ $( document ).ready(function() {
 	document.getElementById('video').addEventListener('loadedmetadata', function() {
 		this.currentTime = 3;
 	}, false);
-
-});
-
-$(function() {          
+  
 	//Enable swiping...
 	$(".swipescrub").swipe( {
 		//Generic swipe handler for all directions
@@ -45,6 +41,7 @@ $(function() {
    //Default is 75px
    threshold:15
 	});
+  
 });
 
 
