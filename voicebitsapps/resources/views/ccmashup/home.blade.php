@@ -15,15 +15,14 @@ polimemeteam
   <div class="col s12 card swipescrub">
       <video id="video" class="responsive-video" controls autoplay="1" muted preload="metadata">
         <source src="{{ $videos_random[0] }}" type="video/mp4">
-        <track label="horror" kind="subtitles" srclang="en" src="{{ url('ccmashup/parsed/0_comedy.vtt') }}" default>
-{{--       <track label="{{ $single_genre_info['genres'][0] }}" kind="subtitles" srclang="en" 
-          src="{{ $genre_single[0]['title_url'] }}" default>--}} 
-  @foreach ($genres_info as $genre_info => $info)
-    @foreach ( $info as $track)
-    <track label="{{ $genre_info }}" kind="{{ $track['kind'] }}" 
-      srclang="{{ $track['lang'] }}" src="{{ $track['title_url'] }}" >
-    @endforeach
-  @endforeach
+        <track label="{{ $single_genre_info['genres'][0] }}" kind="subtitles" srclang="en" 
+          src="{{ $genre_single[0]['title_url'] }}" default>
+      @foreach ($genres_info as $genre_info => $info)
+        @foreach ( $info as $track)
+        <track label="{{ $genre_info }}" kind="{{ $track['kind'] }}" 
+          srclang="{{ $track['lang'] }}" src="{{ $track['title_url'] }}" >
+        @endforeach
+      @endforeach
 
         {{-- local testing video <source src="http://pinduin.com/images/waddlehelp.mp4" type="video/mp4"> 
         <track label="horror" kind="subtitles" srclang="en" src="{{ url('ccmashup/testcopy.vtt') }}" default>
