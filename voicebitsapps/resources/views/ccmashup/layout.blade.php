@@ -14,7 +14,7 @@
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="{{ url('/') }}" class="brand-logo">ccMashup</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="{{ url('/') }}" class="brand-logo">SCRUBTITLES</a>
 	@if (Auth::guest())
       <ul class="right hide-on-med-and-down hide">
         <li><a href="{{ url('/home') }}">Log In</a></li>
@@ -78,8 +78,10 @@
         <script type="text/javascript" src="/ccmashup/js/jquery.touchSwipe.min.js"></script>
         <!-- Discover  -->
         {{-- Messages Container END 
-<script type="text/javascript" src="/ccmashup/js/video-player.js"></script>--}}
-        <script type="text/javascript" src="/ccmashup/js/scrubr.js"></script>
+<script type="text/javascript" src="/ccmashup/js/video-player.js"></script>
+        <script src="/ccmashup/js/vendor/shake.js"></script>
+        <script type="text/javascript" src="/ccmashup/js/main.js"></script>--}}
+        <script type="text/javascript" src="/ccmashup/js/scrubr_klh.js"></script>
   <script src="/js/materialize.min.js"></script>
   <script src="/js/init.js"></script>
 

@@ -1,20 +1,72 @@
 @extends('ccmashup.layout')
 @section('title')
-Inspire. Be inspired.
+polimemeteam
 @stop
 
 @section('body')
 <div class="row">
-<div class="col s12 card">
-    <div class="card-image swipescrub">
-        <video id="video" controls="true" autoplay="1" muted preload="metadata"/>
-          <source src="http://stm.dam.digizuite.dk/dmm3bwsv3/372_10032_10001_1_2_0_6e5d6f10-e316-43e4-8fef-e33d36336140.mp4?635885556265320000" type="video/mp4">          
-          <track label="English" kind="subtitles" srclang="en" src="/ccmashup/subtitles/textVTT.vtt" default>
-        </video>
+  @foreach ($genres_info as $genre_info => $info)
+  <div id="{{ $genre_info }}" data-scrubid="c1001923" class="hide" >
+    @foreach ( $info as $track)
+    <track label="{{ $genre_info }}" kind="{{ $track['kind'] }}" srclang="{{ $track['lang'] }}" src="{{ url('subtitle').'/'.$genre_info.'/'.$track['title'] }}" >
+    @endforeach
+  </div>
+  @endforeach
+  <div class="col s12 card swipescrub">
+      <video id="video" class="responsive-video" controls autoplay="1" muted preload="metadata">
+        <source src="{{ $videos_random[0] }}" type="video/mp4">
+        <track label="horror" kind="subtitles" srclang="en" src="{{ url('ccmashup/parsed/0_comedy.vtt') }}" default>
+{{--       <track label="{{ $single_genre_info['genres'][0] }}" kind="subtitles" srclang="en" 
+          src="{{ $genre_single[0]['title_url'] }}" default>--}} 
+  @foreach ($genres_info as $genre_info => $info)
+    @foreach ( $info as $track)
+    <track label="{{ $genre_info }}" kind="{{ $track['kind'] }}" 
+      srclang="{{ $track['lang'] }}" src="{{ $track['title_url'] }}" >
+    @endforeach
+  @endforeach
+
+        {{-- local testing video <source src="http://pinduin.com/images/waddlehelp.mp4" type="video/mp4"> 
+        <track label="horror" kind="subtitles" srclang="en" src="{{ url('ccmashup/testcopy.vtt') }}" default>
+        <track label="horror" kind="subtitles" srclang="en" src="{{ url('subtitle/zroot/test01.vtt') }}" >
+        <track label="romance" kind="subtitles" srclang="da" src="/ccmashup/subtitles/romance/romance.vtt" >--}}
+      </video>
+    <div class="card-content hide">    
+      <div id="video-controls" class="controls" >
+        <a class="play" ><i class="material-icons">play_circle_outline</i></a>
+        <a class="pause" ><i class="material-icons">stop</i></a>
+      </div>
+      <div class="progress col s8">
+      <div class="determinate" style="width: 70%"></div>
+      </div>
     </div>
- </div>
+  </div>      
 </div>
-<div class="row">
+@foreach ($videos_all as $video)
+<div class="row hide" >
+  <div class="col s12 card ">
+      <video id="video" class="responsive-video" controls muted preload="metadata">
+        <source src="{{ $video }}" type="video/mp4">
+        <track label="horror" kind="subtitles" srclang="en" src="{{ url('ccmashup/testcopy.vtt') }}" default>
+        <track label="horror" kind="subtitles" srclang="en" src="{{ url('subtitle/zroot/test01.vtt') }}" >
+        <track label="romance" kind="subtitles" srclang="da" src="/ccmashup/subtitles/romance/romance.vtt" >
+      </video>
+    <div class="card-content hidden">    
+      <div id="video-controls" class="controls" >
+        <a class="play" ><i class="material-icons">play_circle_outline</i></a>
+        <a class="pause" ><i class="material-icons">stop</i></a>
+      </div>
+      <div class="progress col s8">
+      <div class="determinate" style="width: 70%"></div>
+      </div>
+    </div>
+  </div>      
+</div>
+@endforeach
+{{-- 
+
+  This is a bunch of local debug testing of Tracks
+
+  <div class="row">
   @foreach ($genres as $genre)
   <div class="col s12 card">
     <div id="{{ $genre }}" class="card-content">
@@ -26,12 +78,14 @@ Inspire. Be inspired.
       <span class="text" >This is a new {{ $genre }} text: {{ $track['text'] }}</span>   
       </li>
       @endforeach
-
+      <a href="#!" onclick="test2();" title="Play Test">
+        <i class="material-icons right">play_circle_outline </i>
+      </a>
     </div>
   </div>
   @endforeach
 </div>
-{{-- 
+
 <div class="row">
  <div class="col s12 m6 offset-m3 card">
     <div class="card-image">

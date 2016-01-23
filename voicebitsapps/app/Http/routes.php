@@ -20,7 +20,19 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index'); // authenticated users home
 
 # CCshake aka SCRUBTITLES api routing
+Route::get('subtitle/{genre}/{filename}', 'PoliMemesController@displaySubtitle');
+#Route::get('video/{filename}', 'PoliMemesController@displayVideo');
 Route::resource('api', 'PoliMemesController');
+
+Route::get('api/v1/subtitle/{genre}/{filename}', 'PoliMemesController@displaySubtitle');
+Route::get('api/v1/get/video/{id?}', 'PoliMemesController@getVideo');
+Route::get('api/v1/get/track/{genre?}', 'PoliMemesController@getTrackInfo');
+Route::get('api/v1/get/parsed/{genre}/{id}/{offset?}', 'PoliMemesController@getParsedFiles');
+Route::resource('api/v1', 'PoliMemesController');
+
+
+Route::post('subtitle/{filename}', 'PoliMemesController@putSubtitle');
+
 
 # Blog pages
 Route::get('about', 'WelcomeController@about');
