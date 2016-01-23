@@ -6,7 +6,7 @@
 	
 	function swipeFunction() {
 		//Enable swiping...
-		$("body").swipe( {
+		$("swipescrub").swipe( {
 			//Generic swipe handler for all directions
 				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 					console.log("swiped:" + direction);
@@ -53,6 +53,27 @@
     console.log(currentGenre, genres[currentGenre]);	
 		var track = video.addTextTrack("captions", genres[currentGenre], "en");
 		track.mode = "showing";
+
+	var track = video.addTextTrack("captions", "comedy", "en");
+	track.mode = "showing";
+
+	var starttime = [], endtime = [] , text = [] ;
+
+	$selector = $("#comedy li");
+	$selector.each(function(i){
+		starttime[i] = $selector.eq(i).find(".start").text();
+		endtime[i]   = $selector.eq(i).find(".end").text();
+		text[i]      = $selector.eq(i).find(".text").text();
+		});
+	console.log(starttime.length, starttime);
+	console.log($selector);
+
+		for (var i = 0; i < starttime.length; i++) {
+		   console.log(i, starttime[i], endtime[i], text[i]);
+		   track.addCue(new VTTCue(starttime[i], endtime[i], text[i]));
+		}
+
+
 		track.addCue(new VTTCue(0, 12, "Loaded Cues"));
 		track.addCue(new VTTCue(18.7, 21.5, "This blade has a dark past."));
 		track.addCue(new VTTCue(22.8, 26.8, "It has shed much innocent blood."));
@@ -69,16 +90,7 @@
 		track.addCue(new VTTCue(118.25, 119.5, "We're almost done. Shhh..."));	
   }  
 	
-	var starttime;
-	$selector = $("div #"+genre[currentGenre]+" li");
-	$selector.each(function(i){
-		starttime = $(this + ".start").html();
-		endtime = $(this + ".end").html();
-		text = $(this + ".text").html();
-		track.addCue(new VTTCue(starttime, endtime, text));
-	});
-	
-	function shakeFunction() {
+/*	function shakeFunction() {
 		var myShakeEvent = new Shake({
 		    //threshold: 15, // optional shake strength threshold
 		    //timeout: 1000 // optional, determines the frequency of event generation
@@ -94,6 +106,6 @@
 	}
 	
 	
-	shakeFunction();
+	//sshakeFunction();*/
 	swipeFunction();
 }());

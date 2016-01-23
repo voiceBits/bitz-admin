@@ -260,7 +260,6 @@ function getParsedFiles($valid_genre, $id, $offset=0)
 function parseFile($file_to_parse, $parse_file_to, $offset)
 {
     // Returns true if file scrubbed successfully; false for all else
-
     $return_flag = false;
     $content = Storage::get($file_to_parse); 
     $txt_file = mb_convert_encoding($content, 'UTF-8', 
@@ -275,20 +274,17 @@ function parseFile($file_to_parse, $parse_file_to, $offset)
     }
     $orig_rows = explode($eols[$index], $txt_file);
 
-    //$offset_index = $offset;
     $rows_formatted = array();
     $rows_formatted_scrub = array();
     $webvtt = "WEBVTT".$eols[$index].$eols[$index];
 
     $scrub_date = new DateTime('00:00:00.000');
     $scrub_offset = new DateInterval('PT1S');
-    //$scrub_increment = 'PT10S';
-    $scrub_interval = new DateInterval('PT10S');
+    $scrub_interval = new DateInterval('PT5S');
 
     $time_start = $scrub_date->format('H:i:s');
     $scrub_date->add($scrub_interval);
     $time_end = $scrub_date->format('H:i:s');
-    //$time_end_scrub = $scrub_date->format('H:i:s');
     $time_start_prev = $time_start;
     $time_end_prev = $time_end;
 
@@ -298,13 +294,12 @@ function parseFile($file_to_parse, $parse_file_to, $offset)
     }
 
     $i=0;
-    // debug $offset=2;
     foreach ($orig_rows as $row) {
         $row_scrub = $row;
         if (stripos($row, "-->")) {
-            $row = $time_start." --> ".$time_end;
+            $row = $time_start.".000 --> ".$time_end.".999";
             $row_scrub =  ($i >= $offset) ? 
-                $time_start_prev." --> ".$time_end_prev : "99:99:99.000 --> 99:99:99.000";
+                $time_start_prev.".000 --> ".$time_end_prev.".999" : "99:99:99.000 --> 99:99:99.000";
             $i++;
             $time_start_prev = $time_start;
             $time_end_prev = $time_end;
@@ -327,7 +322,6 @@ function parseFile($file_to_parse, $parse_file_to, $offset)
 
     //$content = file_get_contents($file_to_parse); 
     //$return_flag = file_put_contents ( $parse_file_to , $rows_formatted );
-
 }
 
 function displayVideo($filename)
@@ -337,7 +331,6 @@ function displayVideo($filename)
     $file = Storage::disk('local')->get($path);
     $mime = Storage::mimeType($path);
     $size = Storage::size($path);
-    //dd($path, $size, $mime);
 
     return (new Response($file, 200))
               ->header('Content-Type', $mime)

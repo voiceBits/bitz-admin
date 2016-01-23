@@ -81,7 +81,7 @@
 <script type="text/javascript" src="/ccmashup/js/video-player.js"></script>
         <script src="/ccmashup/js/vendor/shake.js"></script>
         <script type="text/javascript" src="/ccmashup/js/main.js"></script>--}}
-        <script type="text/javascript" src="/ccmashup/js/scrubr_klh.js"></script>
+        <script type="text/javascript" src="/ccmashup/js/scrubr.js"></script>
   <script src="/js/materialize.min.js"></script>
   <script src="/js/init.js"></script>
 
