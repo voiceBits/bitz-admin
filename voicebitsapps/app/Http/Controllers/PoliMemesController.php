@@ -305,6 +305,7 @@ function parseFile($file_to_parse, $parse_file_to, $offset)
     }
 
     $i=0;
+    $first_row_scrub_flag = true;
     foreach ($orig_rows as $row) {
         $row_scrub = $row;
         if (stripos($row, "-->")) {
@@ -330,9 +331,19 @@ function parseFile($file_to_parse, $parse_file_to, $offset)
             $duration_date->add($duration_interval);
             $time_end = $duration_date->format('H:i:s');
 
-            $row = $time_start.$time_start_ms." --> ".$time_end.$time_end_ms;   
-            $row_scrub =  ($i >= $offset) ? 
-                $time_start_prev.$time_start_ms." --> ".$time_end_prev.$time_end_ms : "99:99:99.000 --> 99:99:99.000";
+            $row = $time_start.$time_start_ms." --> ".$time_end.$time_end_ms;
+            if ($i >= $offset) {
+                if ($first_row_scrub_flag == true) {
+                    $row_scrub = "00:00:00".$time_start_ms." --> ".$time_end_prev.$time_end_ms;
+                    $first_row_scrub_flag = false;
+                } else {
+                    $row_scrub = $time_start_prev.$time_start_ms." --> ".$time_end_prev.$time_end_ms;
+                    $first_row_scrub_flag = false;
+                }                
+            } else {
+                $row_scrub = "99:99:99.000 --> 99:99:99.000";               
+            }
+
             $i++;
             $time_start_prev = $time_start;
             $time_end_prev = $time_end;
