@@ -6,10 +6,7 @@ polimemeteam
 @section('body')
 <div class="row">
   @foreach ($genres_info as $genre_info => $info)
-  <div id="{{ $genre_info }}" data-scrubid="c1001923" class="hide" >
-    @foreach ( $info as $track)
-    <track label="{{ $genre_info }}" kind="{{ $track['kind'] }}" srclang="{{ $track['lang'] }}" src="{{ url('subtitle').'/'.$genre_info.'/'.$track['title'] }}" >
-    @endforeach
+  <div id="{{ $genre_info }}" class="hide" >
   </div>
   @endforeach
   <div class="col s12 card swipescrub">

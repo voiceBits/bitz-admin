@@ -57,25 +57,13 @@ class PoliMemesController extends Controller
         $all_genres_info = json_decode($all_genres_query->getContent(), true);
         $genres_info = $all_genres_info['genre_subtitles'];
 
-
-        //$parsable = $this->getParsedFiles("comedy","comedy.vtt",1);
-        //$parsable = $this->parseFile();
-
-        //dd($genre_single, $genres_info, $videos_all, $videos_single);
-
         $genres = array('comedy','horror','romance');
-        $text['comedy'][0] = array( 'duration' => '10', 'start' => '0', 'end' => '10', 'text' => 'aaaaaaaaa');
-        $text['comedy'][1] = array( 'duration' => '10', 'start' => '10', 'end' => '20', 'text' => 'bbbb');
-        $text['comedy'][2] = array( 'duration' => '140', 'start' => '20', 'end' => '160', 'text' => 'cccccccc');
-        $text['horror'][0] = array( 'duration' => '5', 'start' => '0', 'end' => '5', 'text' => 'fadfda');
-        $text['horror'][1] = array( 'duration' => '300', 'start' => '5', 'end' => '305', 'text' => 'afadfdafadfadfadfadf');
-        $text['romance'][0] = array( 'duration' => '120', 'start' => '0', 'end' => '120', 'text' => '5555555555555');
 
     	return view('ccmashup.home', 
             compact('video_single','videos_all','videos_random',
                     'genres_info', 'genre_single', 'parsable',
                     'single_genre_info', 'all_genres_info',
-                    'genres', 'text'
+                    'genres'
                     ));
 
     }
