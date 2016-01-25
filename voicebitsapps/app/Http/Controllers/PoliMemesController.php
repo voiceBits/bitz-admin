@@ -38,6 +38,15 @@ class PoliMemesController extends Controller
      */
     public function index()
     {
+        # Retrieve videos and subtitles and show view
+
+        $get_all = '2';     // specific video by index
+        $videos_single = $this->getVideo($get_all);
+        $get_all = false;   // random video
+        $videos_random = $this->getVideo($get_all);
+        $get_all = true;    // all videos
+        $videos_all = $this->getVideo($get_all);
+
         // get json to assoc array values to send to view
         $by_genre = "comedy";
         $single_genre_query = $this->getTrackInfo($by_genre);
@@ -48,12 +57,6 @@ class PoliMemesController extends Controller
         $all_genres_info = json_decode($all_genres_query->getContent(), true);
         $genres_info = $all_genres_info['genre_subtitles'];
 
-        $get_all = '2';     // specific video by index
-        $videos_single = $this->getVideo($get_all);
-        $get_all = false;   // random video
-        $videos_random = $this->getVideo($get_all);
-        $get_all = true;    // all videos
-        $videos_all = $this->getVideo($get_all);
 
         //$parsable = $this->getParsedFiles("comedy","comedy.vtt",1);
         //$parsable = $this->parseFile();
@@ -119,12 +122,16 @@ class PoliMemesController extends Controller
         $src_videos[1] = "http://stm.dam.digizuite.dk/dmm3bwsv3/306_10032_10001_1_2_0_a91f0be4-6ca7-45dd-97b9-873987e294ff.mp4?635885491307190000";
         $src_videos[2] = "http://stm.dam.digizuite.dk/dmm3bwsv3/355_10032_10001_1_2_0_a91f0be4-6ca7-45dd-97b9-873987e294ff.mp4?635885492626700000";
         $src_videos[3] = "http://stm.dam.digizuite.dk/dmm3bwsv3/362_10032_10001_1_2_0_a91f0be4-6ca7-45dd-97b9-873987e294ff.mp4?635885493035970000";
+        $src_videos[4] = "https://archive.org/embed/FrankenberryCountChoculaTevevisionCommercial1971";
+
+        $src_videos_count = count($src_videos) - 1;
+
         if ($all === true) {
             # This is a new random request
             // Retrieve available video to stream
             $video_info = $src_videos;
         } else {
-            $rand = ($all !== false && $all >= 0 && $all <= 3) ? $all : mt_rand(0,3);
+            $rand = ($all !== false && $all >= 0 && $all <= $src_videos_count) ? $all : mt_rand(0, $src_videos_count);
             $video_info[0] = $src_videos[$rand];
         }
 
@@ -280,11 +287,15 @@ function parseFile($file_to_parse, $parse_file_to, $offset)
 
     $scrub_date = new DateTime('00:00:00.000');
     $scrub_offset = new DateInterval('PT1S');
-    $scrub_interval = new DateInterval('PT5S');
+    $scrub_interval = new DateInterval('PT5S'); // fixed interval scrub
 
     $time_start = $scrub_date->format('H:i:s');
     $scrub_date->add($scrub_interval);
     $time_end = $scrub_date->format('H:i:s');
+
+    $time_end = $time_start;
+
+
     $time_start_prev = $time_start;
     $time_end_prev = $time_end;
 
@@ -297,16 +308,38 @@ function parseFile($file_to_parse, $parse_file_to, $offset)
     foreach ($orig_rows as $row) {
         $row_scrub = $row;
         if (stripos($row, "-->")) {
-            $row = $time_start.".000 --> ".$time_end.".999";
+            // extract duration for each row and increment time end
+            $text=$row;
+            $duration_date = new DateTime($time_end);
+
+            $index_sec = strrpos($text, ":");
+            $text2=substr($text, 0,  strpos($text, "-->"));
+            $index_sec2 = strrpos( $text2 , ":");
+
+            $time_end_dur = substr($text, $index_sec+1, 2);
+            $time_end_ms = substr($text, $index_sec+3, 4);
+            $time_start_dur = substr($text2, $index_sec2+1, 2);
+            $time_start_orig = $time_start_dur;
+            $time_start_ms = substr($text2, $index_sec2+3, 4);
+            $duration_passage = (($time_end_dur - $time_start_dur) < 0) 
+                ? ((60 - $time_start_dur) + $time_end_dur) + 2 
+                : ($time_end_dur - $time_start_dur) + 2;
+            $interval_string = 'PT'.$duration_passage.'S';     // dynamic interval scrub
+            $duration_interval = new DateInterval($interval_string);
+
+            $duration_date->add($duration_interval);
+            $time_end = $duration_date->format('H:i:s');
+
+            $row = $time_start.$time_start_ms." --> ".$time_end.$time_end_ms;   
             $row_scrub =  ($i >= $offset) ? 
-                $time_start_prev.".000 --> ".$time_end_prev.".999" : "99:99:99.000 --> 99:99:99.000";
+                $time_start_prev.$time_start_ms." --> ".$time_end_prev.$time_end_ms : "99:99:99.000 --> 99:99:99.000";
             $i++;
             $time_start_prev = $time_start;
             $time_end_prev = $time_end;
+            $scrub_date = new DateTime($time_end);
             $scrub_date->add($scrub_offset);
-            $time_start = $scrub_date->format('H:i:s');;
-            $scrub_date->add($scrub_interval);
-            $time_end = $scrub_date->format('H:i:s');
+            $time_start = $scrub_date->format('H:i:s');
+
         }
         $row_formatted = $row.$eols[$index];
         $row_formatted_scrub = $row_scrub.$eols[$index];
