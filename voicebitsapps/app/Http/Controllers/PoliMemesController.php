@@ -106,11 +106,11 @@ class PoliMemesController extends Controller
     {
         # Read from video_titles table when this is created evt. by user to randomize
         # $src_videos = App\Subtitle::get();
-        $src_videos[0] = "http://stm.dam.digizuite.dk/dmm3bwsv3/372_10032_10001_1_2_0_a91f0be4-6ca7-45dd-97b9-873987e294ff.mp4?635885493452760000";
+       /* $src_videos[4] = "http://stm.dam.digizuite.dk/dmm3bwsv3/372_10032_10001_1_2_0_a91f0be4-6ca7-45dd-97b9-873987e294ff.mp4?635885493452760000";
         $src_videos[1] = "http://stm.dam.digizuite.dk/dmm3bwsv3/306_10032_10001_1_2_0_a91f0be4-6ca7-45dd-97b9-873987e294ff.mp4?635885491307190000";
         $src_videos[2] = "http://stm.dam.digizuite.dk/dmm3bwsv3/355_10032_10001_1_2_0_a91f0be4-6ca7-45dd-97b9-873987e294ff.mp4?635885492626700000";
-        $src_videos[3] = "http://stm.dam.digizuite.dk/dmm3bwsv3/362_10032_10001_1_2_0_a91f0be4-6ca7-45dd-97b9-873987e294ff.mp4?635885493035970000";
-        $src_videos[4] = "https://archive.org/embed/FrankenberryCountChoculaTevevisionCommercial1971";
+        $src_videos[3] = "http://stm.dam.digizuite.dk/dmm3bwsv3/362_10032_10001_1_2_0_a91f0be4-6ca7-45dd-97b9-873987e294ff.mp4?635885493035970000";*/
+        $src_videos[0] = "https://archive.org/embed/FrankenberryCountChoculaTevevisionCommercial1971";
 
         $src_videos_count = count($src_videos) - 1;
 
