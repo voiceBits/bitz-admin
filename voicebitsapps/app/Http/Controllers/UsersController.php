@@ -31,7 +31,7 @@ public function __construct(Request $request)
 	public function index()
 	{
 		//
-            $users = DB::select('select * from users');
+            $users = User::paginate(5);
             return view('users.index',compact('users'));
 	}
 

@@ -4,7 +4,8 @@ Inspire. Be inspired.
 @stop
 @section('body')
 <div class="row">
-    <a href="{{ action('UsersController@create') }}" class="waves-effect waves-light btn">Add New User</a>
+    <a href="{{ action('UsersController@create') }}" class="waves-effect waves-light btn right">Add New User</a>
+    {!! $users->render() !!}
 </div> 
 @stop
 @section('body2')
@@ -15,7 +16,7 @@ Inspire. Be inspired.
             <div>{{ $user->username }}
                 <a href="{{ action('UsersController@show', [$user->id]) }}" class="secondary-content"><i class="material-icons">send</i></a>
                 {!! Form::open(['action' => ['UsersController@destroy', $user->id], 'method' => 'delete']) !!}
-                  {!! Form::submit('delete', ['class'=>'red material-icons']) !!}
+                  {!! Form::submit('delete', ['class'=>'btn red']) !!}
                 {!! Form::close() !!}                
             </div>
         </li>

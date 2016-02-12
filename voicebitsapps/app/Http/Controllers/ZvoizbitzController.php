@@ -31,7 +31,7 @@ class ZvoizbitzController extends Controller {
 	public function index()
 	{
             //
-            $records = DB::select('select * from voizbitZ');
+            $records = DB::connection('fooTest')->table('timelines')->paginate(5);
             return view('bitz.index',compact('records'));
         }
 

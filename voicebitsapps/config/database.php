@@ -84,6 +84,18 @@ return [
 			'prefix'   => '',
 		],
 
+		'fooTest' => [
+			'driver'    => 'mysql',
+			'host'      => env('DB_HOST', 'localhost'),
+			'database'  => env('DB_DATABASE', 'voicebits_master'),
+			'username'  => env('DB_USERNAME', 'footest'),
+			'password'  => env('DB_PASSWORD', 'footest'),
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+			'strict'    => false,
+		],
+
 	],
 
 	/*
